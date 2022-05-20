@@ -34,5 +34,8 @@ public class Factura extends Entity<FacturaId> {
     return costoTotal;
   }
 
+  public Nombre getNombre() {
+    return nombre;
+  }
 
 }
