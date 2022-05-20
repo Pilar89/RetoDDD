@@ -1,19 +1,20 @@
-package co.com.sofkau.gestionHuespedes.checkIn.events;
+package co.com.sofkau.gestionHuespedes.checkIn.commands;
 
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 import co.com.sofkau.generic.values.Nombre;
+import co.com.sofkau.gestionHuespedes.checkIn.values.CheckInId;
 import co.com.sofkau.gestionHuespedes.checkIn.values.Descuento;
 import co.com.sofkau.gestionHuespedes.checkIn.values.PromocionId;
 
-public class PromocionCreada extends DomainEvent {
+public class AgregarPromocion extends Command {
 
+  private final CheckInId checkInId;
   private final PromocionId promocionId;
   private final Nombre nombre;
   private final Descuento descuento;
 
-  public PromocionCreada(PromocionId promocionId, Nombre nombre,
-                         Descuento descuento){
-    super("co.com.sofkau.gestionHuespedes.PromocionCreada");
+  public AgregarPromocion(CheckInId checkInId, PromocionId promocionId, Nombre nombre, Descuento descuento) {
+    this.checkInId = checkInId;
     this.promocionId = promocionId;
     this.nombre = nombre;
     this.descuento = descuento;
@@ -29,5 +30,9 @@ public class PromocionCreada extends DomainEvent {
 
   public Descuento getDescuento() {
     return descuento;
+  }
+
+  public CheckInId getCheckInId() {
+    return checkInId;
   }
 }

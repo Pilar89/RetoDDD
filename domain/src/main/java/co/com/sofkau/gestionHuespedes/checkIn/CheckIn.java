@@ -6,8 +6,8 @@ import co.com.sofkau.generic.values.Fecha;
 import co.com.sofkau.generic.values.MetodoDePago;
 import co.com.sofkau.generic.values.Nombre;
 import co.com.sofkau.gestionHuespedes.checkIn.events.CheckInCreado;
-import co.com.sofkau.gestionHuespedes.checkIn.events.HuespedCreado;
-import co.com.sofkau.gestionHuespedes.checkIn.events.PromocionCreada;
+import co.com.sofkau.gestionHuespedes.checkIn.events.HuespedAgregado;
+import co.com.sofkau.gestionHuespedes.checkIn.events.PromocionAgregada;
 import co.com.sofkau.gestionHuespedes.checkIn.values.*;
 
 import java.util.List;
@@ -46,12 +46,12 @@ public class CheckIn extends AggregateEvent<CheckInId> {
                              Direccion direccion, Correo correo){
 
     var huespedId = new HuespedId();
-    appendChange(new HuespedCreado(huespedId, nombre,telefono,direccion,correo)).apply();
+    appendChange(new HuespedAgregado(huespedId, nombre,telefono,direccion,correo)).apply();
   }
 
   public void agregarPromocion(Nombre nombre, Descuento descuento){
     var promocionId = new PromocionId();
-    appendChange(new PromocionCreada(promocionId,nombre,descuento)).apply();
+    appendChange(new PromocionAgregada(promocionId,nombre,descuento)).apply();
 
   }
 
