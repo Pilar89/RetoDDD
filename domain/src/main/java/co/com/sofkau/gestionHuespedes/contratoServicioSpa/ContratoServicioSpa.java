@@ -33,7 +33,7 @@ public class ContratoServicioSpa extends AggregateEvent<ContratoServicioSpaId> {
     var  contratoServicioSpa = new ContratoServicioSpa(contratoServicioSpaId);
     events.forEach(contratoServicioSpa::applyEvent);
     return contratoServicioSpa;
-  }
 
+  }
 
 }

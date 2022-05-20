@@ -25,6 +25,14 @@ public class Factura extends Entity<FacturaId> {
     this.cobros.add(cobro);
   }
 
+  public void agregarCobros(CobroFactory factory){
+    factory.cobros().forEach(this::agregarCobro);
+
+  }
+  public Set<Cobro>cobros(){
+    return cobros;
+  }
+
   public Costo calcularCostoTotal(){
     if (this.cobros.isEmpty()) this.costoTotal = new Costo((double) 0);
     this.cobros.forEach((cobro -> {
@@ -34,8 +42,10 @@ public class Factura extends Entity<FacturaId> {
     return costoTotal;
   }
 
+
   public Nombre getNombre() {
     return nombre;
   }
+
 
 }

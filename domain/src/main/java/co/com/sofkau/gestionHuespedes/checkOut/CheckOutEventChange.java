@@ -4,6 +4,7 @@ import co.com.sofka.domain.generic.EventChange;
 import co.com.sofkau.generic.Cobro;
 import co.com.sofkau.gestionHuespedes.checkOut.events.CheckOutCreado;
 import co.com.sofkau.gestionHuespedes.checkOut.events.CobroAgregadoAFactura;
+import co.com.sofkau.gestionHuespedes.checkOut.events.CobrosAgregadosAFactura;
 
 public class CheckOutEventChange extends EventChange {
 
@@ -19,6 +20,10 @@ public class CheckOutEventChange extends EventChange {
     apply((CobroAgregadoAFactura event)->{
       var cobro = new Cobro(event.getCobroId(),event.getCheckInId(),event.getContratoServicioSpaId(),event.getCosto());
       checkOut.factura.agregarCobro(cobro);
+    });
+
+    apply((CobrosAgregadosAFactura event)->{
+     checkOut.factura.agregarCobros(event.getFactory());
     });
 
 

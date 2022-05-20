@@ -8,7 +8,9 @@ import co.com.sofkau.generic.values.Fecha;
 import co.com.sofkau.gestionHuespedes.checkIn.values.CheckInId;
 import co.com.sofkau.gestionHuespedes.checkOut.events.CheckOutCreado;
 import co.com.sofkau.gestionHuespedes.checkOut.events.CobroAgregadoAFactura;
+import co.com.sofkau.gestionHuespedes.checkOut.events.CobrosAgregadosAFactura;
 import co.com.sofkau.gestionHuespedes.checkOut.values.CheckOutId;
+import co.com.sofkau.gestionHuespedes.checkOut.values.FacturaId;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.ContratoServicioSpaId;
 
 import java.util.List;
@@ -43,6 +45,10 @@ public class CheckOut extends AggregateEvent<CheckOutId> {
     var cobroID = new CobroId();
     appendChange(new CobroAgregadoAFactura(cobroID, checkInId,contratoServicioSpaId,costo)).apply();
 
+  }
+
+  public void agregarCobrosAfactura(FacturaId facturaId, CobroFactory factory){
+    appendChange(new CobrosAgregadosAFactura(facturaId,factory)).apply();
   }
 
 
