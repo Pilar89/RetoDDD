@@ -3,7 +3,6 @@ package co.com.sofkau.gestionHuespedes.checkIn;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkau.generic.values.Fecha;
-import co.com.sofkau.generic.Huesped;
 import co.com.sofkau.generic.values.MetodoDePago;
 import co.com.sofkau.generic.values.Nombre;
 import co.com.sofkau.gestionHuespedes.checkIn.events.CheckInCreado;
@@ -16,14 +15,14 @@ import java.util.Map;
 
 public class CheckIn extends AggregateEvent<CheckInId> {
 
-  protected Habitacion habitacion;
+  protected HabitacionHotel habitacion;
   protected Map<HuespedId, Huesped> huespedes;
   protected Fecha fechaLlegada;
   protected Fecha fechaSalida;
   protected MetodoDePago metodoDePago;
   protected Promocion promocion;
 
-  public CheckIn(CheckInId checkInId, Habitacion habitacion,
+  public CheckIn(CheckInId checkInId, HabitacionHotel habitacion,
                  Fecha  fechaLlegada, Fecha fechaSalida,
                  MetodoDePago metodoDePago) {
     super(checkInId);

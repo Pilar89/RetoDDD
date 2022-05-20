@@ -3,17 +3,17 @@ package co.com.sofkau.gestionHuespedes.checkIn.events;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkau.generic.values.Fecha;
 import co.com.sofkau.generic.values.MetodoDePago;
-import co.com.sofkau.gestionHuespedes.checkIn.Habitacion;
+import co.com.sofkau.gestionHuespedes.checkIn.HabitacionHotel;
 
 
 public class CheckInCreado extends DomainEvent {
 
-  private final Habitacion habitacion;
+  private final HabitacionHotel habitacion;
   private final Fecha fechaLlegada;
   private final Fecha fechaSalida;
   private final MetodoDePago metodoDePago;
 
-  public CheckInCreado( Habitacion habitacion,
+  public CheckInCreado( HabitacionHotel habitacion,
                  Fecha fechaLlegada, Fecha fechaSalida,
                  MetodoDePago metodoDePago){
     super("co.com.sofkau.gestionHuespedes.CheckOutCreado");
@@ -24,7 +24,7 @@ public class CheckInCreado extends DomainEvent {
 
   }
 
-  public Habitacion getHabitacion() {
+  public HabitacionHotel getHabitacion() {
     return habitacion;
   }
 

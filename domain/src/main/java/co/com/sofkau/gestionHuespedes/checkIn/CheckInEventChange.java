@@ -1,11 +1,10 @@
 package co.com.sofkau.gestionHuespedes.checkIn;
 
 import co.com.sofka.domain.generic.EventChange;
-import co.com.sofkau.generic.Huesped;
 import co.com.sofkau.gestionHuespedes.checkIn.events.CheckInCreado;
 import co.com.sofkau.gestionHuespedes.checkIn.events.HuespedCreado;
 import co.com.sofkau.gestionHuespedes.checkIn.events.PromocionCreada;
-import co.com.sofkau.gestionHuespedes.checkIn.values.Disponibilidad;
+import co.com.sofkau.generic.values.Disponibilidad;
 
 import java.util.HashMap;
 

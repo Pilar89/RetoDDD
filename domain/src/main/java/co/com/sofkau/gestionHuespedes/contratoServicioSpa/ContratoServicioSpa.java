@@ -2,8 +2,8 @@ package co.com.sofkau.gestionHuespedes.contratoServicioSpa;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofkau.generic.Huesped;
-import co.com.sofkau.gestionHuespedes.checkIn.values.HabitacionId;
+import co.com.sofkau.gestionHuespedes.checkIn.Huesped;
+import co.com.sofkau.gestionHuespedes.checkIn.values.HabitacionHotelId;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.ContratoServicioSpaCreado;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.ContratoServicioSpaId;
 
@@ -13,13 +13,14 @@ public class ContratoServicioSpa extends AggregateEvent<ContratoServicioSpaId> {
 
  protected ContratoServicioSpaId contratoServicioSpaId ;
  protected ServicioSpa servicioSpa;
- protected Huesped huesped;
- protected HabitacionId habitacionId;
+ protected EmpleadoSpa empleadoSpa;
+ protected HabitacionHotelId habitacionId;
+ protected HabitacionSpa habitacionSpa;
 
   public ContratoServicioSpa(ContratoServicioSpaId contratoServicioSpaId,
-                               ServicioSpa servicioSpa, Huesped huesped, HabitacionId habitacionId){
+                               ServicioSpa servicioSpa,EmpleadoSpa empleadoSpa, HabitacionHotelId habitacionId, HabitacionSpa habitacionSpa){
     super(contratoServicioSpaId);
-    appendChange(new ContratoServicioSpaCreado(servicioSpa,huesped,habitacionId)).apply();
+    appendChange(new ContratoServicioSpaCreado(servicioSpa,empleadoSpa,habitacionId,habitacionSpa)).apply();
     subscribe(new ContratoServicoSpaEventChange(this));
   }
 

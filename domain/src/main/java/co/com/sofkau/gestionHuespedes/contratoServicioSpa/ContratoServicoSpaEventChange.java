@@ -7,8 +7,9 @@ public class ContratoServicoSpaEventChange extends EventChange {
   public ContratoServicoSpaEventChange(ContratoServicioSpa contratoServicioSpa){
     apply((ContratoServicioSpaCreado event)->{
       contratoServicioSpa.servicioSpa = event.getServicioSpa();
-      contratoServicioSpa.huesped = event.getHuesped();
+      contratoServicioSpa.empleadoSpa = event.getEmpleadoSpa();
       contratoServicioSpa.habitacionId = event.getHabitacionId();
+      contratoServicioSpa.habitacionSpa = event.getHabitacionSpa();
     });
   }
 }

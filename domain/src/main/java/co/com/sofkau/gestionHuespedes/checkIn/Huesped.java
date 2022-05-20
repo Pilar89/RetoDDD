@@ -1,4 +1,4 @@
-package co.com.sofkau.generic;
+package co.com.sofkau.gestionHuespedes.checkIn;
 
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofkau.generic.values.Nombre;
@@ -19,5 +19,21 @@ public class Huesped extends Entity<HuespedId> {
     this.telefono = telefono;
     this.direccion = direccion;
     this.correo = correo;
+  }
+
+  public Nombre getNombre() {
+    return nombre;
+  }
+
+  public Telefono getTelefono() {
+    return telefono;
+  }
+
+  public Direccion getDireccion() {
+    return direccion;
+  }
+
+  public Correo getCorreo() {
+    return correo;
   }
 }
