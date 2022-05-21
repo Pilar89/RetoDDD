@@ -4,7 +4,7 @@
 
 #### Se aplica el modelo DDD (Domain-Driven Desing) a un hotel, que además del servicio de hospedaje, es famoso por  el servicio de spa ofrecido adicionalmente a sus clientes. Con una amplia variedad de paquetes.
 #### A continuación se presenta el modelo de dominio.
-####El modelo completo se encuentra en el siguiente link:
+#### El modelo completo se encuentra en el siguiente link:
 
 #### https://drive.google.com/file/d/163mP1e9kPDGUIF5XytnNpXrv13WJshoh/view?usp=sharing
 
