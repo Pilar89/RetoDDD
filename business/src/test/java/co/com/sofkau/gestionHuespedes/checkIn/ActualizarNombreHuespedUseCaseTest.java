@@ -7,8 +7,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkau.generic.values.Fecha;
 import co.com.sofkau.generic.values.MetodoDePago;
 import co.com.sofkau.generic.values.Nombre;
-import co.com.sofkau.gestionHuespedes.checkIn.commands.ActualizarHuesped;
-import co.com.sofkau.gestionHuespedes.checkIn.commands.AgregarHuesped;
+import co.com.sofkau.gestionHuespedes.checkIn.commands.ActualizarNombreHuesped;
 import co.com.sofkau.gestionHuespedes.checkIn.events.CheckInCreado;
 import co.com.sofkau.gestionHuespedes.checkIn.events.HuespedAgregado;
 import co.com.sofkau.gestionHuespedes.checkIn.values.*;
@@ -23,14 +22,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class ActualizarHuespedUseCaseTest {
+class ActualizarNombreHuespedUseCaseTest {
 
     @InjectMocks
-    private ActualizarHuespedUseCase useCase;
+    private ActualizarNombreHuespedUseCase useCase;
 
     @Mock
     private DomainEventRepository repository;
@@ -42,7 +40,7 @@ class ActualizarHuespedUseCaseTest {
       var checkInId = CheckInId.of("checkinId");
       var huespedId = HuespedId.of("huespedId");
       var nombre = new Nombre("Juan Perez");
-      var command = new ActualizarHuesped(checkInId, huespedId, nombre);
+      var command = new ActualizarNombreHuesped(checkInId, huespedId, nombre);
 
       when(repository.getEventsBy("checkinId")).thenReturn(history());
       useCase.addRepository(repository);

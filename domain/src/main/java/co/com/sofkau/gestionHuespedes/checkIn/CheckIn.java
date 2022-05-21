@@ -5,10 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkau.generic.values.Fecha;
 import co.com.sofkau.generic.values.MetodoDePago;
 import co.com.sofkau.generic.values.Nombre;
-import co.com.sofkau.gestionHuespedes.checkIn.events.CheckInCreado;
-import co.com.sofkau.gestionHuespedes.checkIn.events.HuespedActualizado;
-import co.com.sofkau.gestionHuespedes.checkIn.events.HuespedAgregado;
-import co.com.sofkau.gestionHuespedes.checkIn.events.PromocionAgregada;
+import co.com.sofkau.gestionHuespedes.checkIn.events.*;
 import co.com.sofkau.gestionHuespedes.checkIn.values.*;
 
 import java.util.List;
@@ -56,7 +53,11 @@ public class CheckIn extends AggregateEvent<CheckInId> {
 
   }
 
-  public void actualizarHuespedNombre(HuespedId id, Nombre nombre) {
-    appendChange(new HuespedActualizado(id, nombre)).apply();
+  public void actualizarHuespedNombre(HuespedId huespedId, Nombre nombre) {
+    appendChange(new NombreHuespedActualizado(huespedId, nombre)).apply();
   }
+  public void actualizarHuespedTelefono(HuespedId huespedId, Telefono telefono){
+    appendChange(new TelefonoHuespedActualizado(huespedId,telefono)).apply();
+  }
+
 }

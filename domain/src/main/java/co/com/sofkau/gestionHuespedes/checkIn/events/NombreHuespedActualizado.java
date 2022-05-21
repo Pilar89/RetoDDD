@@ -4,13 +4,13 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkau.generic.values.Nombre;
 import co.com.sofkau.gestionHuespedes.checkIn.values.HuespedId;
 
-public class HuespedActualizado extends DomainEvent {
+public class NombreHuespedActualizado extends DomainEvent {
 
   private final HuespedId huespedId;
   private final Nombre nombre;
 
-  public HuespedActualizado(HuespedId id, Nombre nombre) {
-    super("co.com.sofkau.gestionHuespedes.checkIn.events.HuespedActualizado");
+  public NombreHuespedActualizado(HuespedId id, Nombre nombre) {
+    super("co.com.sofkau.gestionHuespedes.checkIn.events.NombreHuespedActualizado");
     this.huespedId = id;
     this.nombre = nombre;
   }
