@@ -10,14 +10,9 @@ public class AgregarHuespedUseCase extends UseCase<RequestCommand<AgregarHuesped
   @Override
   public void executeUseCase(RequestCommand<AgregarHuesped> agregarHuespedRequestCommandRequestCommand) {
     var command = agregarHuespedRequestCommandRequestCommand.getCommand();
-
     var checkIn = CheckIn.from(command.getCheckInId(),repository().getEventsBy(command.getCheckInId().value()));
 
     checkIn.agregarHuesped(command.getNombre(),command.getTelefono(),command.getDireccion(),command.getCorreo());
-
     emit().onResponse(new ResponseEvents(checkIn.getUncommittedChanges()));
   }
-
-
-
 }

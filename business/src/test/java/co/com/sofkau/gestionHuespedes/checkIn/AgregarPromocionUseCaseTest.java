@@ -61,7 +61,7 @@ class AgregarPromocionUseCaseTest {
     var habitacion = new HabitacionHotel(habitacionId,categoria);
     var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
     var metodoDePago = new MetodoDePago("Tarjeta devito");
-    var event = new CheckInCreado(habitacion,fecha,fecha,metodoDePago);
+    var event = new CheckInCreado(checkInId,habitacion,fecha,fecha,metodoDePago);
     return  List.of(event);
   }
 

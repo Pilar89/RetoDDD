@@ -69,12 +69,8 @@ class AgregarHuespedUseCaseTest {
     var habitacion = new HabitacionHotel(habitacionId,categoria);
     var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
     var metodoDePago = new MetodoDePago("Tarjeta devito");
-    var event =  new CheckInCreado(habitacion,fecha,fecha,metodoDePago);
-    event.setAggregateRootId("kjjl1323");
+    var event =  new CheckInCreado(checkInId,habitacion,fecha,fecha,metodoDePago);
     return List.of(event);
-
-
-
   }
 
 }

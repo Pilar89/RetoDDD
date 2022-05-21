@@ -36,4 +36,20 @@ public class Huesped extends Entity<HuespedId> {
   public Correo getCorreo() {
     return correo;
   }
+
+  public void updateNombre(Nombre nombre) {
+    this.nombre = nombre;
+  }
+
+  public void updateTelefono(Telefono telefono) {
+    this.telefono = telefono;
+  }
+
+  public void updateDireccion(Direccion direccion) {
+    this.direccion = direccion;
+  }
+
+  public void updateCorreo(Correo correo) {
+    this.correo = correo;
+  }
 }

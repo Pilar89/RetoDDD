@@ -15,16 +15,9 @@ public class AgregarCobroUsecase extends UseCase<RequestCommand<AgregarCobro>, R
     var command = agregarCobroRequestCommand.getCommand();
     var checkOut = CheckOut.form(command.getCheckOutId(),repository().getEventsBy(command.getCheckOutId().value()));
 
-
-
    CobroFactory factory = CobroFactory.builder().agregarCobro(command.getCobro());
    checkOut.agregarCobrosAfactura(command.getFacturaId(),factory);
 
    emit().onResponse(new ResponseEvents(checkOut.getUncommittedChanges()));
   }
-
-
-
-
-
 }

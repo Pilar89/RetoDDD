@@ -2,6 +2,7 @@ package co.com.sofkau.gestionHuespedes.checkIn;
 
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofkau.gestionHuespedes.checkIn.events.CheckInCreado;
+import co.com.sofkau.gestionHuespedes.checkIn.events.HuespedActualizado;
 import co.com.sofkau.gestionHuespedes.checkIn.events.HuespedAgregado;
 import co.com.sofkau.gestionHuespedes.checkIn.events.PromocionAgregada;
 import co.com.sofkau.generic.values.Disponibilidad;
@@ -33,10 +34,10 @@ public class CheckInEventChange extends EventChange {
       checkIn.promocion= promocion;
     });
 
-
-
-
+    apply((HuespedActualizado event) -> {
+      var id = event.getHuespedId();
+      var huesped = checkIn.huespedes.get(id);
+      huesped.updateNombre(event.getNombre());
+    });
   }
-
-
 }
