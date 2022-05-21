@@ -2,6 +2,7 @@ package co.com.sofkau.gestionHuespedes.checkIn;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofkau.generic.values.Disponibilidad;
 import co.com.sofkau.generic.values.Fecha;
 import co.com.sofkau.generic.values.MetodoDePago;
 import co.com.sofkau.generic.values.Nombre;
@@ -68,4 +69,7 @@ public class CheckIn extends AggregateEvent<CheckInId> {
     appendChange(new CorreoHuespedActualizado(huespedId,correo)).apply();
   }
 
+  public void actualizarDisponibilidadHabitacion(HabitacionHotelId habitacionId, Disponibilidad disponibilidad) {
+    appendChange(new DisponibilidadHabitacionActualizada(habitacionId, disponibilidad)).apply();
+  }
 }

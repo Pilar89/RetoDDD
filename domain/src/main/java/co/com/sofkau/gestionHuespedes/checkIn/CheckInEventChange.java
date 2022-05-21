@@ -54,5 +54,11 @@ public class CheckInEventChange extends EventChange {
       var huesped = checkIn.huespedes.get(id);
       huesped.updateCorreo(event.getCorreo());
     });
+
+    apply((DisponibilidadHabitacionActualizada event)-> {
+      var habitacionId = event.getHabitacionHotelId();
+      var disponibilidad = event.getDisponibilidad();
+      checkIn.habitacion.cambiarDisponibilidad(disponibilidad);
+    });
   }
 }
