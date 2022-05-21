@@ -11,9 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Factura extends Entity<FacturaId> {
- protected Nombre nombre;
- protected Set<Cobro> cobros;
- protected Costo costoTotal;
+  protected Nombre nombre;
+  protected Set<Cobro> cobros;
+  protected Costo costoTotal;
 
   public Factura(FacturaId entityId, Nombre nombre) {
     super(entityId);
@@ -21,19 +21,21 @@ public class Factura extends Entity<FacturaId> {
     this.costoTotal = new Costo((double) 0);
     this.cobros = new HashSet<>();
   }
-  public void agregarCobro(Cobro cobro){
+
+  public void agregarCobro(Cobro cobro) {
     this.cobros.add(cobro);
   }
 
-  public void agregarCobros(CobroFactory factory){
+  public void agregarCobros(CobroFactory factory) {
     factory.cobros().forEach(this::agregarCobro);
 
   }
-  public Set<Cobro>cobros(){
+
+  public Set<Cobro> cobros() {
     return cobros;
   }
 
-  public Costo calcularCostoTotal(){
+  public Costo calcularCostoTotal() {
     if (this.cobros.isEmpty()) this.costoTotal = new Costo((double) 0);
     this.cobros.forEach((cobro -> {
       var valorCostoTotal = this.costoTotal.value() + cobro.getCosto().value();

@@ -9,7 +9,7 @@ import co.com.sofkau.gestionHuespedes.checkOut.commands.CrearCheckOut;
 public class CrearCheckOutUseCase extends UseCase<RequestCommand<CrearCheckOut>, ResponseEvents> {
 
   @Override
-  public void executeUseCase(RequestCommand<CrearCheckOut> crearCheckOutRequestCommand){
+  public void executeUseCase(RequestCommand<CrearCheckOut> crearCheckOutRequestCommand) {
     var command = crearCheckOutRequestCommand.getCommand();
 
     var checkOut = new CheckOut(
@@ -20,7 +20,6 @@ public class CrearCheckOutUseCase extends UseCase<RequestCommand<CrearCheckOut>,
     );
     emit().onResponse(new ResponseEvents(checkOut.getUncommittedChanges()));
   }
-
 
 
 }

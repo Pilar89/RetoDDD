@@ -1,4 +1,5 @@
 package co.com.sofkau.gestionHuespedes.checkIn;
+
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
@@ -20,6 +21,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -32,14 +34,14 @@ class AgregarPromocionUseCaseTest {
   private DomainEventRepository repository;
 
   @Test
-  void agregarPromocionHappyPass(){
+  void agregarPromocionHappyPass() {
 
     var checkInId = CheckInId.of("ksasaqq121");
     //Descuento
     var promocionId = PromocionId.of("dwed123");
     var nombrePromocion = new Nombre("Oferta dia de la madre");
-    var descuento =  new Descuento(12.0);
-    var command = new AgregarPromocion(checkInId,promocionId,nombrePromocion,descuento);
+    var descuento = new Descuento(12.0);
+    var command = new AgregarPromocion(checkInId, promocionId, nombrePromocion, descuento);
 
     when(repository.getEventsBy("ksasaqq121")).thenReturn(history());
     useCase.addRepository(repository);
@@ -50,19 +52,20 @@ class AgregarPromocionUseCaseTest {
       .orElseThrow()
       .getDomainEvents();
 
-    var event = (PromocionAgregada)events.get(0);
-    Assertions.assertEquals("Oferta dia de la madre",event.getNombre().value());
+    var event = (PromocionAgregada) events.get(0);
+    Assertions.assertEquals("Oferta dia de la madre", event.getNombre().value());
 
   }
-  private List<DomainEvent>history(){
+
+  private List<DomainEvent> history() {
     var checkInId = CheckInId.of("checkkk");
     var habitacionId = new HabitacionHotelId("HHHH");
     var categoria = new Categoria("Diamante");
-    var habitacion = new HabitacionHotel(habitacionId,categoria);
+    var habitacion = new HabitacionHotel(habitacionId, categoria);
     var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
     var metodoDePago = new MetodoDePago("Tarjeta devito");
-    var event = new CheckInCreado(checkInId,habitacion,fecha,fecha,metodoDePago);
-    return  List.of(event);
+    var event = new CheckInCreado(checkInId, habitacion, fecha, fecha, metodoDePago);
+    return List.of(event);
   }
 
 

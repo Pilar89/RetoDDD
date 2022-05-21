@@ -5,7 +5,7 @@ import co.com.sofkau.generic.values.Costo;
 import co.com.sofkau.generic.values.Nombre;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.ServicioSpaId;
 
-public class ServicioSpa  extends Entity<ServicioSpaId> {
+public class ServicioSpa extends Entity<ServicioSpaId> {
   protected Nombre nombre;
   protected Costo costo;
 

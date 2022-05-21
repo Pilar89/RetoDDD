@@ -24,31 +24,31 @@ class CrearCheckOutUseCaseTest {
   private CrearCheckOutUseCase useCase;
 
   @BeforeEach
-  public void setup(){
+  public void setup() {
     useCase = new CrearCheckOutUseCase();
   }
 
   @Test
-  public void crearCheckOutHappyPass(){
+  public void crearCheckOutHappyPass() {
     var checkOutId = new CheckOutId("kssaaa");
     var checkInId = new CheckInId("ckkkk");
-    var fecha =  new Fecha(LocalDateTime.now(), LocalDate.now());
+    var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
 
     //factura
     var facturaId = new FacturaId("800.197.268-4");
     var nombre = new Nombre("Consultores asociados");
-    var factura = new Factura(facturaId,nombre);
-    var command = new CrearCheckOut(checkOutId,checkInId,fecha,factura);
+    var factura = new Factura(facturaId, nombre);
+    var command = new CrearCheckOut(checkOutId, checkInId, fecha, factura);
 
     var events = UseCaseHandler.getInstance()
-      .syncExecutor(useCase,new RequestCommand<>(command))
+      .syncExecutor(useCase, new RequestCommand<>(command))
       .orElseThrow()
       .getDomainEvents();
 
-    var checkOutCreado = (CheckOutCreado)events.get(0);
-    Assertions.assertEquals("kssaaa",checkOutCreado.aggregateRootId());
-    Assertions.assertEquals("ckkkk",checkOutCreado.getCheckInId().value());
-    Assertions.assertEquals("Consultores asociados",checkOutCreado.getFactura().getNombre().value());
+    var checkOutCreado = (CheckOutCreado) events.get(0);
+    Assertions.assertEquals("kssaaa", checkOutCreado.aggregateRootId());
+    Assertions.assertEquals("ckkkk", checkOutCreado.getCheckInId().value());
+    Assertions.assertEquals("Consultores asociados", checkOutCreado.getFactura().getNombre().value());
 
 
   }

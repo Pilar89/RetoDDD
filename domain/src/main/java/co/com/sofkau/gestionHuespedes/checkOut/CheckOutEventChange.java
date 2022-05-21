@@ -8,27 +8,23 @@ import co.com.sofkau.gestionHuespedes.checkOut.events.CobrosAgregadosAFactura;
 
 public class CheckOutEventChange extends EventChange {
 
-  public CheckOutEventChange(CheckOut checkOut){
-    apply((CheckOutCreado event)->{
+  public CheckOutEventChange(CheckOut checkOut) {
+    apply((CheckOutCreado event) -> {
       checkOut.checkInId = event.getCheckInId();
       checkOut.fechaCheckOut = event.getFechaCheckOut();
-      checkOut.factura= event.getFactura();
+      checkOut.factura = event.getFactura();
 
 
     });
 
-    apply((CobroAgregadoAFactura event)->{
-      var cobro = new Cobro(event.getCobroId(),event.getCheckInId(),event.getContratoServicioSpaId(),event.getCosto());
+    apply((CobroAgregadoAFactura event) -> {
+      var cobro = new Cobro(event.getCobroId(), event.getCheckInId(), event.getContratoServicioSpaId(), event.getCosto());
       checkOut.factura.agregarCobro(cobro);
     });
 
-    apply((CobrosAgregadosAFactura event)->{
-     checkOut.factura.agregarCobros(event.getFactory());
+    apply((CobrosAgregadosAFactura event) -> {
+      checkOut.factura.agregarCobros(event.getFactory());
     });
-
-
-
-
 
 
   }

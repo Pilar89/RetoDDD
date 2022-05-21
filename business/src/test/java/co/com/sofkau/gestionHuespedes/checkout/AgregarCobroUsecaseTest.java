@@ -34,13 +34,13 @@ import static org.mockito.Mockito.when;
 class AgregarCobroUsecaseTest {
 
   @InjectMocks
-  private  AgregarCobroUsecase usecase;
+  private AgregarCobroUsecase usecase;
 
   @Mock
   private DomainEventRepository repository;
 
   @Test
-  void agregarCobroHappyPass(){
+  void agregarCobroHappyPass() {
     CheckOutId checkOutId = CheckOutId.of("dwdmwk");
     FacturaId facturaId = FacturaId.of("lklkñlk");
     //Se ingresa un cobro por spa
@@ -49,8 +49,8 @@ class AgregarCobroUsecaseTest {
     var contratoServicioSpaId = new ContratoServicioSpaId("lklñlkñ");
     var costo = new Costo(10000.0);
 
-    Cobro cobro = new Cobro(cobroId,checkInId,contratoServicioSpaId,costo);
-    var command = new AgregarCobro(checkOutId,facturaId,cobro);
+    Cobro cobro = new Cobro(cobroId, checkInId, contratoServicioSpaId, costo);
+    var command = new AgregarCobro(checkOutId, facturaId, cobro);
 
     when(repository.getEventsBy("dwdmwk")).thenReturn(history());
     usecase.addRepository(repository);
@@ -59,29 +59,26 @@ class AgregarCobroUsecaseTest {
       .syncExecutor(usecase, new RequestCommand<>(command))
       .orElseThrow()
       .getDomainEvents();
-    var event = (CobroAgregadoAFactura)events.get(0);
-    Assertions.assertEquals(10000.0,event.getCosto().value());
+    var event = (CobroAgregadoAFactura) events.get(0);
+    Assertions.assertEquals(10000.0, event.getCosto().value());
 
   }
 
   @Test
 
-  private List<DomainEvent> history(){
+  private List<DomainEvent> history() {
 
     var checkInId = new CheckInId("ckkkk");
-    var fecha =  new Fecha(LocalDateTime.now(), LocalDate.now());
+    var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
 
     //factura
     var facturaId = new FacturaId("800.197.268-4");
     var nombre = new Nombre("Consultores asociados");
-    var factura = new Factura(facturaId,nombre);
+    var factura = new Factura(facturaId, nombre);
 
-    return List.of(new CheckOutCreado(checkInId,fecha,factura));
+    return List.of(new CheckOutCreado(checkInId, fecha, factura));
 
   }
-
-
-
 
 
 }

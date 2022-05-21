@@ -9,10 +9,10 @@ public class ActualizarTelefonoHuespedUseCase extends UseCase<RequestCommand<Act
 
   @Override
   public void executeUseCase(RequestCommand<ActualizarTelefonoHuesped> actualizarTelefonoHuespedRequestCommand) {
-    var command =  actualizarTelefonoHuespedRequestCommand.getCommand();
+    var command = actualizarTelefonoHuespedRequestCommand.getCommand();
     var checkinId = command.getCheckInId();
     var checkin = CheckIn.from(checkinId, repository().getEventsBy(checkinId.value()));
-    checkin.actualizarHuespedTelefono(command.getHuespedId(),command.getTelefono());
+    checkin.actualizarHuespedTelefono(command.getHuespedId(), command.getTelefono());
 
     emit().onResponse(new ResponseEvents(checkin.getUncommittedChanges()));
   }

@@ -13,7 +13,7 @@ public class HuespedAgregado extends DomainEvent {
   private final Correo correo;
 
   public HuespedAgregado(CheckInId checkinId, HuespedId huespeId, Nombre nombre, Telefono telefono,
-                         Direccion direccion, Correo corre){
+                         Direccion direccion, Correo corre) {
     super("co.com.sofkau.gestionHuespede.HuespedAgregado");
     this.checkinId = checkinId;
     this.huespeId = huespeId;

@@ -8,7 +8,7 @@ public class CobrosAgregadosAFactura extends DomainEvent {
   private final FacturaId facturaId;
   private final CobroFactory factory;
 
-  public CobrosAgregadosAFactura(FacturaId facturaId, CobroFactory factory){
+  public CobrosAgregadosAFactura(FacturaId facturaId, CobroFactory factory) {
     super("co.com.sofkau.gestionHuespedes.CobrosAgregadosAFactura");
     this.facturaId = facturaId;
     this.factory = factory;

@@ -10,14 +10,11 @@ public class AgregarPromocionUseCase extends UseCase<RequestCommand<AgregarPromo
   @Override
   public void executeUseCase(RequestCommand<AgregarPromocion> agregarPromocionRequestCommand) {
     var command = agregarPromocionRequestCommand.getCommand();
-    var checkIn = CheckIn.from(command.getCheckInId(),repository().getEventsBy(command.getCheckInId().value()));
-    checkIn.agregarPromocion(command.getNombre(),command.getDescuento());
+    var checkIn = CheckIn.from(command.getCheckInId(), repository().getEventsBy(command.getCheckInId().value()));
+    checkIn.agregarPromocion(command.getNombre(), command.getDescuento());
 
     emit().onResponse(new ResponseEvents(checkIn.getUncommittedChanges()));
   }
-
-
-
 
 
 }

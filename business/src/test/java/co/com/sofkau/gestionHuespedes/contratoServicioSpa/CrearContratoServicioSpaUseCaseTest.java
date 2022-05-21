@@ -19,11 +19,12 @@ class CrearContratoServicioSpaUseCaseTest {
   private CrearContratoServicioSpaUseCase useCase;
 
   @BeforeEach
-  public void setup(){
-    useCase= new CrearContratoServicioSpaUseCase();
+  public void setup() {
+    useCase = new CrearContratoServicioSpaUseCase();
   }
+
   @Test
-  public void crearContratoServicioSpaHappyPass(){
+  public void crearContratoServicioSpaHappyPass() {
     var crearContratoServicioSpaId = ContratoServicioSpaId.of("sppppp");
 
     //ServicioSpa
@@ -31,13 +32,13 @@ class CrearContratoServicioSpaUseCaseTest {
     var nombreServicioSpa = new Nombre("terapias con agua");
     var costoServicioSpa = new Costo((double) 100000);
     var servicioSpaID = new ServicioSpaId("sssss");
-    var servicioSpa = new ServicioSpa(servicioSpaID,nombreServicioSpa,costoServicioSpa);
+    var servicioSpa = new ServicioSpa(servicioSpaID, nombreServicioSpa, costoServicioSpa);
 
     //EmpleadoSpa
 
     var empleadoSpaId = new EmpleadoSpaId("eeee");
     var nombreEmpleado = new Nombre("Maria");
-    var empleadoSpa = new EmpleadoSpa(empleadoSpaId,nombreEmpleado);
+    var empleadoSpa = new EmpleadoSpa(empleadoSpaId, nombreEmpleado);
 
     //habitacionHotelId
 
@@ -47,21 +48,21 @@ class CrearContratoServicioSpaUseCaseTest {
 
     var habitacionSpaId = new HabitacionSpaId("aaagg");
     var nombreHabitacion = new Nombre("Cuarto de aguas");
-    var habitacionSpa = new HabitacionSpa(habitacionSpaId,nombreHabitacion);
+    var habitacionSpa = new HabitacionSpa(habitacionSpaId, nombreHabitacion);
 
-    var command = new CrearContratoServicioSpa(crearContratoServicioSpaId,servicioSpa,empleadoSpa,habitacionHotelId,habitacionSpa);
+    var command = new CrearContratoServicioSpa(crearContratoServicioSpaId, servicioSpa, empleadoSpa, habitacionHotelId, habitacionSpa);
 
-   var events = UseCaseHandler.getInstance()
-     .syncExecutor(useCase, new RequestCommand<>(command))
-     .orElseThrow()
-     .getDomainEvents();
+    var events = UseCaseHandler.getInstance()
+      .syncExecutor(useCase, new RequestCommand<>(command))
+      .orElseThrow()
+      .getDomainEvents();
 
-    var contratoServicioSpaCreado= (ContratoServicioSpaCreado)events.get(0);
-    Assertions.assertEquals("sppppp",contratoServicioSpaCreado.aggregateRootId());
-    Assertions.assertEquals("terapias con agua",contratoServicioSpaCreado.getServicioSpa().nombre.value());
-    Assertions.assertEquals(100000.0,contratoServicioSpaCreado.getServicioSpa().costo.value());
-    Assertions.assertEquals("Maria",contratoServicioSpaCreado.getEmpleadoSpa().nombre.value());
-    Assertions.assertEquals("hssa",contratoServicioSpaCreado.getHabitacionId().value());
+    var contratoServicioSpaCreado = (ContratoServicioSpaCreado) events.get(0);
+    Assertions.assertEquals("sppppp", contratoServicioSpaCreado.aggregateRootId());
+    Assertions.assertEquals("terapias con agua", contratoServicioSpaCreado.getServicioSpa().nombre.value());
+    Assertions.assertEquals(100000.0, contratoServicioSpaCreado.getServicioSpa().costo.value());
+    Assertions.assertEquals("Maria", contratoServicioSpaCreado.getEmpleadoSpa().nombre.value());
+    Assertions.assertEquals("hssa", contratoServicioSpaCreado.getHabitacionId().value());
     Assertions.assertEquals("Cuarto de aguas", contratoServicioSpaCreado.getHabitacionSpa().nombre.value());
 
 

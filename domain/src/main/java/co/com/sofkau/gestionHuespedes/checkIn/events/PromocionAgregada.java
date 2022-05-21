@@ -12,7 +12,7 @@ public class PromocionAgregada extends DomainEvent {
   private final Descuento descuento;
 
   public PromocionAgregada(PromocionId promocionId, Nombre nombre,
-                           Descuento descuento){
+                           Descuento descuento) {
     super("co.com.sofkau.gestionHuespedes.PromocionAgregada");
     this.promocionId = promocionId;
     this.nombre = nombre;

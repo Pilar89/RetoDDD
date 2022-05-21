@@ -9,14 +9,16 @@ public class CobroFactory {
 
   private final Set<Cobro> cobros;
 
-  private CobroFactory(){
+  private CobroFactory() {
     this.cobros = new HashSet<>();
   }
-  public CobroFactory agregarCobro(Cobro cobro){
+
+  public CobroFactory agregarCobro(Cobro cobro) {
     cobros.add(cobro);
     return this;
   }
-  public static CobroFactory builder(){
+
+  public static CobroFactory builder() {
     return new CobroFactory();
   }
 

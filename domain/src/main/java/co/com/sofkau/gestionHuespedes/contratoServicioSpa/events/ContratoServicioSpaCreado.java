@@ -15,7 +15,7 @@ public class ContratoServicioSpaCreado extends DomainEvent {
 
 
   public ContratoServicioSpaCreado(
-                                   ServicioSpa servicioSpa, EmpleadoSpa empleadoSpa, HabitacionHotelId habitacionId, HabitacionSpa habitacionSpa){
+    ServicioSpa servicioSpa, EmpleadoSpa empleadoSpa, HabitacionHotelId habitacionId, HabitacionSpa habitacionSpa) {
     super("co.com.sofkau.gestionHuespedes.ContratoServicioSpaCreado");
     this.servicioSpa = servicioSpa;
     this.empleadoSpa = empleadoSpa;

@@ -9,7 +9,7 @@ public class MetodoDePago implements ValueObject<String> {
 
   public MetodoDePago(String value) {
     this.value = Objects.requireNonNull(value);
-    if(this.value.isBlank()){
+    if (this.value.isBlank()) {
       throw new IllegalArgumentException("El metodo de pago no puede estar en blanco");
     }
 

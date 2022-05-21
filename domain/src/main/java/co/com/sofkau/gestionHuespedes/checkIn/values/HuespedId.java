@@ -4,11 +4,11 @@ import co.com.sofka.domain.generic.Identity;
 
 public class HuespedId extends Identity {
 
-  public HuespedId(String id){
+  public HuespedId(String id) {
     super(id);
   }
 
-  public HuespedId(){
+  public HuespedId() {
 
   }
 
@@ -16,7 +16,6 @@ public class HuespedId extends Identity {
   public static HuespedId of(String id) {
     return new HuespedId(id);
   }
-
 
 
 }

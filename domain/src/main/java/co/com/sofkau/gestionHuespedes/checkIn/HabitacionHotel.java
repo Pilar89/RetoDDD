@@ -12,11 +12,11 @@ public class HabitacionHotel extends Entity<HabitacionHotelId> {
   public HabitacionHotel(HabitacionHotelId entityId, Categoria categoria) {
     super(entityId);
     this.categoria = categoria;
-    this.disponibilidad = new Disponibilidad(true) ;
+    this.disponibilidad = new Disponibilidad(true);
   }
 
-  public void cambiarDisponibilidad(Disponibilidad disponibilidad){
-     this.disponibilidad = disponibilidad;
+  public void cambiarDisponibilidad(Disponibilidad disponibilidad) {
+    this.disponibilidad = disponibilidad;
   }
 
 

@@ -8,7 +8,7 @@ public class CobroId extends Identity {
     super(value);
   }
 
-  public CobroId(){
+  public CobroId() {
 
   }
 

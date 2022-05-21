@@ -36,7 +36,7 @@ class AgregarHuespedUseCaseTest {
 
 
   @Test
-  void agregarHuespedHappyPass(){
+  void agregarHuespedHappyPass() {
 
     var checkInId = CheckInId.of("lkjas2232");
     //Huesped
@@ -45,7 +45,7 @@ class AgregarHuespedUseCaseTest {
     var direccion = new Direccion("kr 12 32 3");
     var correo = new Correo("kl@gmail.com");
 
-    var command = new AgregarHuesped(checkInId,nombre,telefono,direccion,correo);
+    var command = new AgregarHuesped(checkInId, nombre, telefono, direccion, correo);
 
     when(repository.getEventsBy("lkjas2232")).thenReturn(history());
     useCase.addRepository(repository);
@@ -57,19 +57,19 @@ class AgregarHuespedUseCaseTest {
       .getDomainEvents();
 
 
-    var event = (HuespedAgregado)events.get(0);
-    Assertions.assertEquals("Juan Perez",event.getNombre().value());
+    var event = (HuespedAgregado) events.get(0);
+    Assertions.assertEquals("Juan Perez", event.getNombre().value());
   }
 
-  private List<DomainEvent>history(){
+  private List<DomainEvent> history() {
 
     var checkInId = CheckInId.of("checkkk");
     var habitacionId = new HabitacionHotelId("HHHH");
     var categoria = new Categoria("Diamante");
-    var habitacion = new HabitacionHotel(habitacionId,categoria);
+    var habitacion = new HabitacionHotel(habitacionId, categoria);
     var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
     var metodoDePago = new MetodoDePago("Tarjeta devito");
-    var event =  new CheckInCreado(checkInId,habitacion,fecha,fecha,metodoDePago);
+    var event = new CheckInCreado(checkInId, habitacion, fecha, fecha, metodoDePago);
     return List.of(event);
   }
 

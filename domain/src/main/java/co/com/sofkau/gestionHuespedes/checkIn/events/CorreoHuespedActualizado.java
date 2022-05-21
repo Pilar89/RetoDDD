@@ -11,7 +11,7 @@ public class CorreoHuespedActualizado extends DomainEvent {
   public CorreoHuespedActualizado(HuespedId id, Correo correo) {
     super("co.com.sofkau.gestionHuespedes.checkIn.events.CorreoHuespedActualizado");
     this.huespedId = id;
-    this.correo= correo;
+    this.correo = correo;
   }
 
   public HuespedId getHuespedId() {

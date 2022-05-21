@@ -9,7 +9,7 @@ public class Direccion implements ValueObject<String> {
 
   public Direccion(String value) {
     this.value = Objects.requireNonNull(value);
-    if(this.value.isBlank()){
+    if (this.value.isBlank()) {
       throw new IllegalArgumentException("La direccion no puede estar en blanco");
     }
 

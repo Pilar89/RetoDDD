@@ -6,7 +6,7 @@ import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofkau.gestionHuespedes.checkIn.commands.ActualizarCorreohuesped;
 import co.com.sofkau.gestionHuespedes.checkIn.commands.ActualizarNombreHuesped;
 
-public class ActualizarCorreoHuespedUseCase  extends UseCase<RequestCommand<ActualizarCorreohuesped>, ResponseEvents> {
+public class ActualizarCorreoHuespedUseCase extends UseCase<RequestCommand<ActualizarCorreohuesped>, ResponseEvents> {
   @Override
   public void executeUseCase(RequestCommand<ActualizarCorreohuesped> actualizarCorreohuespedRequestCommand) {
     var command = actualizarCorreohuespedRequestCommand.getCommand();

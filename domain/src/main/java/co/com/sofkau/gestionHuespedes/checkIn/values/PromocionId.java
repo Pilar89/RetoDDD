@@ -3,11 +3,11 @@ package co.com.sofkau.gestionHuespedes.checkIn.values;
 import co.com.sofka.domain.generic.Identity;
 
 public class PromocionId extends Identity {
-  public PromocionId(String id){
+  public PromocionId(String id) {
     super(id);
   }
 
-  public PromocionId(){
+  public PromocionId() {
 
   }
 

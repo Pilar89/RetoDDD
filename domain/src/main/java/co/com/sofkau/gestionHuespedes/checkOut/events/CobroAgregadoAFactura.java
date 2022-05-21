@@ -15,7 +15,7 @@ public class CobroAgregadoAFactura extends DomainEvent {
 
   public CobroAgregadoAFactura(CobroId cobroId, CheckInId checkInId,
                                ContratoServicioSpaId contratoServicioSpaId,
-                               Costo costo){
+                               Costo costo) {
     super("co.com.sofkau.gestionHuespedes.CobroAgregadoAFactura");
     this.cobroId = cobroId;
     this.checkInId = checkInId;

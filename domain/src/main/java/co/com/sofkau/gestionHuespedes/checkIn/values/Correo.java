@@ -9,11 +9,11 @@ public class Correo implements ValueObject<String> {
 
   public Correo(String value) {
     this.value = Objects.requireNonNull(value);
-    if(this.value.isBlank()){
+    if (this.value.isBlank()) {
       throw new IllegalArgumentException("El correo no puede estae en blanco");
     }
 
-    if(this.value.length() > 200){
+    if (this.value.length() > 200) {
       throw new IllegalArgumentException("El correo  no permite mas de 200 caracteres");
     }
   }

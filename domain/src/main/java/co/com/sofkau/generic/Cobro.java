@@ -36,6 +36,4 @@ public class Cobro extends Entity<CobroId> {
   }
 
 
-
-
 }

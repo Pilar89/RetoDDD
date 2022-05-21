@@ -9,8 +9,8 @@ import co.com.sofkau.gestionHuespedes.checkOut.values.CheckOutId;
 public class CrearCheckOut extends Command {
   private final CheckOutId checkOutId;
   private final CheckInId checkInId;
-  private final  Fecha fechaCheckOut;
-  private final  Factura factura;
+  private final Fecha fechaCheckOut;
+  private final Factura factura;
 
   public CrearCheckOut(CheckOutId checkOutId, CheckInId checkInId, Fecha fechaCheckOut, Factura factura) {
     this.checkOutId = checkOutId;

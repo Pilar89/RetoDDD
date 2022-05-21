@@ -16,7 +16,7 @@ public class HabitacionSpa extends Entity<HabitacionSpaId> {
     this.disponibilidad = new Disponibilidad(true);
   }
 
-  public void cambiarDisponibilidad(Disponibilidad disponibilidad){
+  public void cambiarDisponibilidad(Disponibilidad disponibilidad) {
     this.disponibilidad = disponibilidad;
   }
 }

@@ -10,14 +10,14 @@ import co.com.sofkau.gestionHuespedes.checkOut.commands.AgregarCobro;
 public class AgregarCobroUsecase extends UseCase<RequestCommand<AgregarCobro>, ResponseEvents> {
 
   @Override
-  public void executeUseCase(RequestCommand<AgregarCobro> agregarCobroRequestCommand){
+  public void executeUseCase(RequestCommand<AgregarCobro> agregarCobroRequestCommand) {
 
     var command = agregarCobroRequestCommand.getCommand();
-    var checkOut = CheckOut.form(command.getCheckOutId(),repository().getEventsBy(command.getCheckOutId().value()));
+    var checkOut = CheckOut.form(command.getCheckOutId(), repository().getEventsBy(command.getCheckOutId().value()));
 
-   CobroFactory factory = CobroFactory.builder().agregarCobro(command.getCobro());
-   checkOut.agregarCobrosAfactura(command.getFacturaId(),factory);
+    CobroFactory factory = CobroFactory.builder().agregarCobro(command.getCobro());
+    checkOut.agregarCobrosAfactura(command.getFacturaId(), factory);
 
-   emit().onResponse(new ResponseEvents(checkOut.getUncommittedChanges()));
+    emit().onResponse(new ResponseEvents(checkOut.getUncommittedChanges()));
   }
 }

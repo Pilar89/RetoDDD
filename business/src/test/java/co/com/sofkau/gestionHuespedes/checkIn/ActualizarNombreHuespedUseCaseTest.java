@@ -27,51 +27,51 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class ActualizarNombreHuespedUseCaseTest {
 
-    @InjectMocks
-    private ActualizarNombreHuespedUseCase useCase;
+  @InjectMocks
+  private ActualizarNombreHuespedUseCase useCase;
 
-    @Mock
-    private DomainEventRepository repository;
-
-
-    @Test
-    void actualizarHuespedHappyPass() {
-
-      var checkInId = CheckInId.of("checkinId");
-      var huespedId = HuespedId.of("huespedId");
-      var nombre = new Nombre("Juan Perez");
-      var command = new ActualizarNombreHuesped(checkInId, huespedId, nombre);
-
-      when(repository.getEventsBy("checkinId")).thenReturn(history());
-      useCase.addRepository(repository);
-
-      var events = UseCaseHandler.getInstance()
-        .setIdentifyExecutor(command.getCheckInId().value())
-        .syncExecutor(useCase, new RequestCommand<>(command))
-        .orElseThrow()
-        .getDomainEvents();
+  @Mock
+  private DomainEventRepository repository;
 
 
-      var event = events.get(0);
-      Assertions.assertNotNull(event);
-    }
+  @Test
+  void actualizarHuespedHappyPass() {
 
-    private List<DomainEvent> history() {
-      var checkinId = CheckInId.of("checkinId");
-      var habitacionId = new HabitacionHotelId("HHHH");
-      var categoria = new Categoria("Diamante");
-      var habitacion = new HabitacionHotel(habitacionId,categoria);
-      var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
-      var metodoDePago = new MetodoDePago("Tarjeta devito");
-      var eventCheckin =  new CheckInCreado(checkinId,habitacion,fecha,fecha,metodoDePago);
+    var checkInId = CheckInId.of("checkinId");
+    var huespedId = HuespedId.of("huespedId");
+    var nombre = new Nombre("Juan Perez");
+    var command = new ActualizarNombreHuesped(checkInId, huespedId, nombre);
 
-      var huespedId = HuespedId.of("huespedId");
-      var nombre = new Nombre("nombre");
-      var telefono = new Telefono("telefono");
-      var direccion = new Direccion("direccion");
-      var correo = new Correo("correo");
-      var eventHuesped = new HuespedAgregado(checkinId, huespedId, nombre, telefono, direccion, correo);
+    when(repository.getEventsBy("checkinId")).thenReturn(history());
+    useCase.addRepository(repository);
 
-      return List.of(eventCheckin, eventHuesped);
-    }
+    var events = UseCaseHandler.getInstance()
+      .setIdentifyExecutor(command.getCheckInId().value())
+      .syncExecutor(useCase, new RequestCommand<>(command))
+      .orElseThrow()
+      .getDomainEvents();
+
+
+    var event = events.get(0);
+    Assertions.assertNotNull(event);
   }
+
+  private List<DomainEvent> history() {
+    var checkinId = CheckInId.of("checkinId");
+    var habitacionId = new HabitacionHotelId("HHHH");
+    var categoria = new Categoria("Diamante");
+    var habitacion = new HabitacionHotel(habitacionId, categoria);
+    var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
+    var metodoDePago = new MetodoDePago("Tarjeta devito");
+    var eventCheckin = new CheckInCreado(checkinId, habitacion, fecha, fecha, metodoDePago);
+
+    var huespedId = HuespedId.of("huespedId");
+    var nombre = new Nombre("nombre");
+    var telefono = new Telefono("telefono");
+    var direccion = new Direccion("direccion");
+    var correo = new Correo("correo");
+    var eventHuesped = new HuespedAgregado(checkinId, huespedId, nombre, telefono, direccion, correo);
+
+    return List.of(eventCheckin, eventHuesped);
+  }
+}

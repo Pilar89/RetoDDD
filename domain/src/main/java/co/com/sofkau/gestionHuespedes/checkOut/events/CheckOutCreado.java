@@ -12,7 +12,7 @@ public class CheckOutCreado extends DomainEvent {
   private final Factura factura;
 
   public CheckOutCreado(CheckInId checkInId,
-                        Fecha fechaCheckOut, Factura factura){
+                        Fecha fechaCheckOut, Factura factura) {
     super("co.com.sofkau.gestionHuespedes.CheckInCreado");
     this.checkInId = checkInId;
     this.fechaCheckOut = fechaCheckOut;

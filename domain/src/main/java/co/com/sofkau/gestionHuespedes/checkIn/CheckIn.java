@@ -22,51 +22,52 @@ public class CheckIn extends AggregateEvent<CheckInId> {
   protected Promocion promocion;
 
   public CheckIn(CheckInId checkInId, HabitacionHotel habitacion,
-                 Fecha  fechaLlegada, Fecha fechaSalida,
+                 Fecha fechaLlegada, Fecha fechaSalida,
                  MetodoDePago metodoDePago) {
     super(checkInId);
-    appendChange(new CheckInCreado(checkInId,habitacion,fechaLlegada,fechaSalida,metodoDePago))
+    appendChange(new CheckInCreado(checkInId, habitacion, fechaLlegada, fechaSalida, metodoDePago))
       .apply();
-    subscribe(new CheckInEventChange(this) );
+    subscribe(new CheckInEventChange(this));
   }
 
-  private CheckIn(CheckInId checkInId){
+  private CheckIn(CheckInId checkInId) {
     super(checkInId);
     subscribe(new CheckInEventChange(this));
   }
 
-  public static CheckIn from(CheckInId checkInId, List<DomainEvent>events){
+  public static CheckIn from(CheckInId checkInId, List<DomainEvent> events) {
     var checkIn = new CheckIn(checkInId);
-    events.forEach(checkIn :: applyEvent);
+    events.forEach(checkIn::applyEvent);
     return checkIn;
   }
 
   public void agregarHuesped(Nombre nombre, Telefono telefono,
-                             Direccion direccion, Correo correo){
+                             Direccion direccion, Correo correo) {
 
     var huespedId = new HuespedId();
-    appendChange(new HuespedAgregado(entityId, huespedId, nombre,telefono,direccion,correo)).apply();
+    appendChange(new HuespedAgregado(entityId, huespedId, nombre, telefono, direccion, correo)).apply();
   }
 
-  public void agregarPromocion(Nombre nombre, Descuento descuento){
+  public void agregarPromocion(Nombre nombre, Descuento descuento) {
     var promocionId = new PromocionId();
-    appendChange(new PromocionAgregada(promocionId,nombre,descuento)).apply();
+    appendChange(new PromocionAgregada(promocionId, nombre, descuento)).apply();
 
   }
 
   public void actualizarHuespedNombre(HuespedId huespedId, Nombre nombre) {
     appendChange(new NombreHuespedActualizado(huespedId, nombre)).apply();
   }
-  public void actualizarHuespedTelefono(HuespedId huespedId, Telefono telefono){
-    appendChange(new TelefonoHuespedActualizado(huespedId,telefono)).apply();
+
+  public void actualizarHuespedTelefono(HuespedId huespedId, Telefono telefono) {
+    appendChange(new TelefonoHuespedActualizado(huespedId, telefono)).apply();
   }
 
-  public void actualizarHuespedDireccion(HuespedId huespedId, Direccion direccion){
-    appendChange(new DireccionHuespedActualizada(huespedId,direccion)).apply();
+  public void actualizarHuespedDireccion(HuespedId huespedId, Direccion direccion) {
+    appendChange(new DireccionHuespedActualizada(huespedId, direccion)).apply();
   }
 
-  public void actualizarHuespedCorreo(HuespedId huespedId, Correo correo){
-    appendChange(new CorreoHuespedActualizado(huespedId,correo)).apply();
+  public void actualizarHuespedCorreo(HuespedId huespedId, Correo correo) {
+    appendChange(new CorreoHuespedActualizado(huespedId, correo)).apply();
   }
 
   public void actualizarDisponibilidadHabitacion(HabitacionHotelId habitacionId, Disponibilidad disponibilidad) {

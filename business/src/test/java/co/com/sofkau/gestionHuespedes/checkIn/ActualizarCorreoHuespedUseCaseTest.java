@@ -61,10 +61,10 @@ class ActualizarCorreoHuespedUseCaseTest {
     var checkinId = CheckInId.of("checkinId");
     var habitacionId = new HabitacionHotelId("HHHH");
     var categoria = new Categoria("Diamante");
-    var habitacion = new HabitacionHotel(habitacionId,categoria);
+    var habitacion = new HabitacionHotel(habitacionId, categoria);
     var fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
     var metodoDePago = new MetodoDePago("Tarjeta devito");
-    var eventCheckin =  new CheckInCreado(checkinId,habitacion,fecha,fecha,metodoDePago);
+    var eventCheckin = new CheckInCreado(checkinId, habitacion, fecha, fecha, metodoDePago);
 
     var huespedId = HuespedId.of("huespedId");
     var nombre = new Nombre("nombre");
@@ -75,7 +75,6 @@ class ActualizarCorreoHuespedUseCaseTest {
 
     return List.of(eventCheckin, eventHuesped);
   }
-
 
 
 }
