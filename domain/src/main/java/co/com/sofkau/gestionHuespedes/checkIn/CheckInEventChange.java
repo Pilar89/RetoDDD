@@ -1,9 +1,8 @@
 package co.com.sofkau.gestionHuespedes.checkIn;
-
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofkau.gestionHuespedes.checkIn.events.*;
 import co.com.sofkau.generic.values.Disponibilidad;
-import co.com.sofkau.gestionHuespedes.checkIn.values.Telefono;
+
 
 import java.util.HashMap;
 
@@ -42,6 +41,18 @@ public class CheckInEventChange extends EventChange {
       var id = event.getHuespedId();
       var huesped = checkIn.huespedes.get(id);
       huesped.updateTelefono(event.getTelefono());
+    });
+
+    apply((DireccionHuespedActualizada event)->{
+      var id = event.getHuespedId();
+      var huesped = checkIn.huespedes.get(id);
+      huesped.updateDireccion(event.getDireccion());
+    });
+
+    apply((CorreoHuespedActualizado event)->{
+      var id = event.getHuespedId();
+      var huesped = checkIn.huespedes.get(id);
+      huesped.updateCorreo(event.getCorreo());
     });
   }
 }

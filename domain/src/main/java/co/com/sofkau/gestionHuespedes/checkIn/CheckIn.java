@@ -60,4 +60,12 @@ public class CheckIn extends AggregateEvent<CheckInId> {
     appendChange(new TelefonoHuespedActualizado(huespedId,telefono)).apply();
   }
 
+  public void actualizarHuespedDireccion(HuespedId huespedId, Direccion direccion){
+    appendChange(new DireccionHuespedActualizada(huespedId,direccion)).apply();
+  }
+
+  public void actualizarHuespedCorreo(HuespedId huespedId, Correo correo){
+    appendChange(new CorreoHuespedActualizado(huespedId,correo)).apply();
+  }
+
 }
