@@ -1,5 +1,4 @@
 package co.com.sofkau.gestionHuespedes.checkOut;
-
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkau.generic.values.CobroId;

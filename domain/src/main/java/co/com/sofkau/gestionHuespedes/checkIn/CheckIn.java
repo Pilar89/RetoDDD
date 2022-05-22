@@ -73,4 +73,8 @@ public class CheckIn extends AggregateEvent<CheckInId> {
   public void actualizarDisponibilidadHabitacion(HabitacionHotelId habitacionId, Disponibilidad disponibilidad) {
     appendChange(new DisponibilidadHabitacionActualizada(habitacionId, disponibilidad)).apply();
   }
+
+  public void actualizarDisponibilidadHabitacion(Disponibilidad disponibilidad) {
+    this.actualizarDisponibilidadHabitacion(this.habitacion.identity(), disponibilidad);
+  }
 }
