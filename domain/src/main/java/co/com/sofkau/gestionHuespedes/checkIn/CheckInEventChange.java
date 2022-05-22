@@ -15,8 +15,6 @@ public class CheckInEventChange extends EventChange {
       checkIn.fechaLlegada = event.getFechaLlegada();
       checkIn.metodoDePago = event.getMetodoDePago();
       checkIn.huespedes = new HashMap<>();
-      var disponibilidad = new Disponibilidad(false);
-      checkIn.habitacion.cambiarDisponibilidad(disponibilidad);
     });
 
     apply((HuespedAgregado event) -> {

@@ -3,7 +3,6 @@ package co.com.sofkau.gestionHuespedes.checkIn.events;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkau.generic.values.Fecha;
 import co.com.sofkau.generic.values.MetodoDePago;
-import co.com.sofkau.gestionHuespedes.checkIn.CheckIn;
 import co.com.sofkau.gestionHuespedes.checkIn.HabitacionHotel;
 import co.com.sofkau.gestionHuespedes.checkIn.values.CheckInId;
 
@@ -44,5 +43,9 @@ public class CheckInCreado extends DomainEvent {
 
   public MetodoDePago getMetodoDePago() {
     return metodoDePago;
+  }
+
+  public CheckInId getCheckInId() {
+    return checkInId;
   }
 }
