@@ -64,5 +64,10 @@ public class CheckInEventChange extends EventChange {
       var metodoDePago = event.getMetodoDePago();
       checkIn.actualizarMetodoDePago(metodoDePago);
     });
+
+    apply((FechaDeSalidaActualizada event)->{
+      var fechaDeSalida = event.getFechaDeSalida();
+      checkIn.actualizarFechaDeSalida(fechaDeSalida);
+    });
   }
 }

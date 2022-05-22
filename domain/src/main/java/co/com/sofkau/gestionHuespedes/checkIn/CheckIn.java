@@ -82,7 +82,10 @@ public class CheckIn extends AggregateEvent<CheckInId> {
     appendChange(new MetodoDePagoActualizado(metodoDePago)
       );
 
+  }
 
+  public void actualizarFechaDeSalida(Fecha fechaSalida){
+    appendChange(new FechaDeSalidaActualizada(fechaSalida));
   }
 
 
