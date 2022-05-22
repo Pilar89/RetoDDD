@@ -4,10 +4,15 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkau.generic.values.CobroId;
 import co.com.sofkau.generic.values.Costo;
 import co.com.sofkau.generic.values.Fecha;
+import co.com.sofkau.generic.values.Nombre;
+import co.com.sofkau.gestionHuespedes.checkIn.events.ValorDescuentoPromocionActualizado;
 import co.com.sofkau.gestionHuespedes.checkIn.values.CheckInId;
+import co.com.sofkau.gestionHuespedes.checkIn.values.Descuento;
+import co.com.sofkau.gestionHuespedes.checkIn.values.PromocionId;
 import co.com.sofkau.gestionHuespedes.checkOut.events.CheckOutCreado;
 import co.com.sofkau.gestionHuespedes.checkOut.events.CobroAgregadoAFactura;
 import co.com.sofkau.gestionHuespedes.checkOut.events.CobrosAgregadosAFactura;
+import co.com.sofkau.gestionHuespedes.checkOut.events.NombreClienteFacturaActualizado;
 import co.com.sofkau.gestionHuespedes.checkOut.values.CheckOutId;
 import co.com.sofkau.gestionHuespedes.checkOut.values.FacturaId;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.ContratoServicioSpaId;
@@ -48,6 +53,14 @@ public class CheckOut extends AggregateEvent<CheckOutId> {
 
   public void agregarCobrosAfactura(FacturaId facturaId, CobroFactory factory) {
     appendChange(new CobrosAgregadosAFactura(facturaId, factory)).apply();
+  }
+
+  public void actualizarValorDescuentoPromocion(PromocionId promocionId, Descuento descuento){
+    appendChange(new ValorDescuentoPromocionActualizado(promocionId,descuento)).apply();
+  }
+
+  public void  actualizarNombreCienteFactura(FacturaId facturaId, Nombre nombre){
+    appendChange(new NombreClienteFacturaActualizado(facturaId,nombre)).apply();
   }
 
 

@@ -3,6 +3,7 @@ package co.com.sofkau.gestionHuespedes.checkOut;
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofkau.generic.values.Costo;
 import co.com.sofkau.generic.values.Nombre;
+import co.com.sofkau.gestionHuespedes.checkIn.values.Correo;
 import co.com.sofkau.gestionHuespedes.checkOut.values.FacturaId;
 import co.com.sofkau.generic.Cobro;
 
@@ -48,6 +49,10 @@ public class Factura extends Entity<FacturaId> {
   public Nombre getNombre() {
     return nombre;
   }
+
+  public void updateNombre(Nombre nombre) {
+    this.nombre = nombre;
+  };
 
 
 }
