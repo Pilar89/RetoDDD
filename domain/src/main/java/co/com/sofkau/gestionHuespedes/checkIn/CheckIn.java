@@ -77,4 +77,14 @@ public class CheckIn extends AggregateEvent<CheckInId> {
   public void actualizarDisponibilidadHabitacion(Disponibilidad disponibilidad) {
     this.actualizarDisponibilidadHabitacion(this.habitacion.identity(), disponibilidad);
   }
+
+  public void actualizarMetodoDePago(MetodoDePago metodoDePago){
+    appendChange(new MetodoDePagoActualizado(metodoDePago)
+      );
+
+
+  }
+
+
+
 }

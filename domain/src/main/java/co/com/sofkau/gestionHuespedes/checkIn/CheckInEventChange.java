@@ -59,5 +59,10 @@ public class CheckInEventChange extends EventChange {
       var disponibilidad = event.getDisponibilidad();
       checkIn.habitacion.cambiarDisponibilidad(disponibilidad);
     });
+
+    apply((MetodoDePagoActualizado event)->{
+      var metodoDePago = event.getMetodoDePago();
+      checkIn.actualizarMetodoDePago(metodoDePago);
+    });
   }
 }
