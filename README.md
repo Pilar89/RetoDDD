@@ -20,3 +20,8 @@
 
 
 ![img_2.png](img_2.png)
+
+### Casos de uso disparados por eventos:
+#### Se crean dos casos de uso disparados por eventos:
+#### 1) Se actualiza la disponibilidad habitación hotel dispara por el evento checkIn creado
+#### 2) Se actualiza disponibilidad habitación disparada por el evento checkOut creado
