@@ -2,10 +2,13 @@ package co.com.sofkau.gestionHuespedes.contratoServicioSpa;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofkau.generic.values.Disponibilidad;
 import co.com.sofkau.gestionHuespedes.checkIn.Huesped;
 import co.com.sofkau.gestionHuespedes.checkIn.values.HabitacionHotelId;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.ContratoServicioSpaCreado;
+import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.DisponibilidadEmpleadoSpaActualizada;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.ContratoServicioSpaId;
+import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.EmpleadoSpaId;
 
 import java.util.List;
 
@@ -34,6 +37,10 @@ public class ContratoServicioSpa extends AggregateEvent<ContratoServicioSpaId> {
     events.forEach(contratoServicioSpa::applyEvent);
     return contratoServicioSpa;
 
+  }
+
+  public void actualizarDisponibilidadEmpleadoSpa(EmpleadoSpaId empleadoSpaId, Disponibilidad disponibilidad) {
+    appendChange(new DisponibilidadEmpleadoSpaActualizada(empleadoSpaId, disponibilidad)).apply();
   }
 
 }
