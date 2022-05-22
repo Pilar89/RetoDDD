@@ -89,5 +89,10 @@ public class CheckIn extends AggregateEvent<CheckInId> {
   }
 
 
+  public void actualizarValorDescuentoPromocion(PromocionId promocionId,Descuento descuento){
+    appendChange(new ValorDescuentoPromocionActualizado(promocionId,descuento)).apply();
+  }
+
+
 
 }

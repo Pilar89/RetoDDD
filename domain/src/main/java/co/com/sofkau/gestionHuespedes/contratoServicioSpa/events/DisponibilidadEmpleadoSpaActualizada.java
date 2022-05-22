@@ -10,7 +10,7 @@ public class DisponibilidadEmpleadoSpaActualizada extends DomainEvent {
   private final Disponibilidad disponibilidad;
 
   public DisponibilidadEmpleadoSpaActualizada(EmpleadoSpaId empleadoSpaId, Disponibilidad disponibilidad) {
-    super("co.com.sofkau.gestionHuespedes.contratoServicioSpa.DisponibilidadEmpleadoSpaActualizada");
+    super("co.com.sofkau.gestionHuespedes.DisponibilidadEmpleadoSpaActualizada");
     this.empleadoSpaId = empleadoSpaId;
     this.disponibilidad = disponibilidad;
   }

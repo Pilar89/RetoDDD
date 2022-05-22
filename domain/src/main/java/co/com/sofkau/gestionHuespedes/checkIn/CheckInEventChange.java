@@ -3,6 +3,7 @@ package co.com.sofkau.gestionHuespedes.checkIn;
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofkau.gestionHuespedes.checkIn.events.*;
 import co.com.sofkau.generic.values.Disponibilidad;
+import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.DisponibilidadEmpleadoSpaActualizada;
 
 
 import java.util.HashMap;
@@ -69,5 +70,13 @@ public class CheckInEventChange extends EventChange {
       var fechaDeSalida = event.getFechaDeSalida();
       checkIn.actualizarFechaDeSalida(fechaDeSalida);
     });
+
+
+    apply((ValorDescuentoPromocionActualizado event)->{
+      var promodicionId = event.getPromocionId();
+      var descuento = event.getDescuento();
+      checkIn.promocion.updateDescuento(descuento);
+    });
+
   }
 }
