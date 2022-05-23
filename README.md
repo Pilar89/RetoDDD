@@ -32,7 +32,7 @@
 
 
 #### El agregado CheckIn se encuentra compuesto por una lista de clientes que se hospedarán en una habitación, método de pago, fecha de llegada que corresponde a la fecha actual del CheckIn, una presunta fecha de salida y la opción de agregar un paquete promocional.
-#### #### 2) Check out
+#### 2) Check out
 
 ![img_6.png](img_6.png)
 
