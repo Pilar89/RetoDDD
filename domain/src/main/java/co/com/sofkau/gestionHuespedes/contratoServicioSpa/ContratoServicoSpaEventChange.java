@@ -2,6 +2,7 @@ package co.com.sofkau.gestionHuespedes.contratoServicioSpa;
 
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.ContratoServicioSpaCreado;
+import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.CostoServicioSpaAtualizado;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.DisponibilidadEmpleadoSpaActualizada;
 
 public class ContratoServicoSpaEventChange extends EventChange {
@@ -17,6 +18,11 @@ public class ContratoServicoSpaEventChange extends EventChange {
       var empleadoSpaId = event.getEmpleadoSpaId();
       var disponibilidad = event.getDisponibilidad();
       contratoServicioSpa.empleadoSpa.cambiarDisponibilidad(disponibilidad);
+    });
+
+    apply((CostoServicioSpaAtualizado event)->{
+      var costo = event.getCosto();
+      contratoServicioSpa.servicioSpa.updateCosto(costo);
     });
 
   }

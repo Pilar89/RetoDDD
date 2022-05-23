@@ -2,13 +2,15 @@ package co.com.sofkau.gestionHuespedes.contratoServicioSpa;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofkau.generic.values.Costo;
 import co.com.sofkau.generic.values.Disponibilidad;
-import co.com.sofkau.gestionHuespedes.checkIn.Huesped;
 import co.com.sofkau.gestionHuespedes.checkIn.values.HabitacionHotelId;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.ContratoServicioSpaCreado;
+import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.CostoServicioSpaAtualizado;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.events.DisponibilidadEmpleadoSpaActualizada;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.ContratoServicioSpaId;
 import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.EmpleadoSpaId;
+import co.com.sofkau.gestionHuespedes.contratoServicioSpa.values.ServicioSpaId;
 
 import java.util.List;
 
@@ -41,6 +43,11 @@ public class ContratoServicioSpa extends AggregateEvent<ContratoServicioSpaId> {
 
   public void actualizarDisponibilidadEmpleadoSpa(EmpleadoSpaId empleadoSpaId, Disponibilidad disponibilidad) {
     appendChange(new DisponibilidadEmpleadoSpaActualizada(empleadoSpaId, disponibilidad)).apply();
+  }
+
+
+  public void atualizarCostoServicioSpa(ServicioSpaId servicioSpaId, Costo costo){
+    appendChange(new CostoServicioSpaAtualizado(servicioSpaId,costo));
   }
 
 }
